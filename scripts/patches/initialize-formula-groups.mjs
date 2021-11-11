@@ -11,7 +11,7 @@ export function patchItemPrepareData() {
 }
 
 export function patchItemSheetGetData() {
-    libWrapper.register(MODULE_NAME, "game.dnd5e.applications.ItemSheet5e.prototype.getData", async function patchedGetData(wrapped, ...args) {
+    libWrapper.register(MODULE_NAME, "game.pergashaFoundryvtt.applications.ItemSheet5e.prototype.getData", async function patchedGetData(wrapped, ...args) {
         if (this.isEditable && this.document.id != null) await initializeFormulaGroups(this.document);
         return wrapped(...args);
     }, "WRAPPER");
@@ -56,7 +56,7 @@ function _createMreFlags(itemData) {
         updates["data.damage.parts"] = itemDamage.parts;
 
         // Add a new "versatile" formula group containing the newly added versatile damage part
-        let verstatileFormulaGroup = createNewFormulaGroup({ label: game.i18n.localize("DND5E.Versatile"), initialSet: [itemDamage.parts.length - 1] });
+        let verstatileFormulaGroup = createNewFormulaGroup({ label: game.i18n.localize("PERGASHA.Versatile"), initialSet: [itemDamage.parts.length - 1] });
         mreFlags.formulaGroups.push(verstatileFormulaGroup);
 
         mreFlags.migratedVersatile = true;

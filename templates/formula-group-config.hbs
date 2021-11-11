@@ -1,5 +1,5 @@
 <form autocomplete="off">
-    <p class="notes">{{ localize "mre-dnd5e.FORMULA-GROUP.DialogHint" }}</p>
+    <p class="notes">{{ localize "mre-pergasha.FORMULA-GROUP.DialogHint" }}</p>
     <table>
         <tr>
             <td><!-- formula column --></td>
@@ -7,7 +7,7 @@
             {{#each formulaGroups}}
                 <td>
                     <input
-                        title="{{localize "mre-dnd5e.FORMULA-GROUP.RenameFormulaGroup" }}"
+                        title="{{localize "mre-pergasha.FORMULA-GROUP.RenameFormulaGroup" }}"
                         name="formulaGroupLabels"
                         type="text"
                         value="{{this.label}}"
@@ -16,7 +16,7 @@
             {{/each}}
             <td>
                     <a
-                        title="{{localize "mre-dnd5e.FORMULA-GROUP.AddFormulaGroup" }}"
+                        title="{{localize "mre-pergasha.FORMULA-GROUP.AddFormulaGroup" }}"
                         class="{{#if canAdd}}add-formula-group{{else}}disabled{{/if}}"
                     >
                         <i class="far fa-plus-square"></i>
@@ -50,7 +50,7 @@
                 <td>
                     {{#if (ne @index 0)}}
                         <a
-                            title="{{localize "mre-dnd5e.FORMULA-GROUP.DeleteFormulaGroup" }}"
+                            title="{{localize "mre-pergasha.FORMULA-GROUP.DeleteFormulaGroup" }}"
                             class="delete-formula-group" data-group-index="{{@index}}"
                         >
                             <i class="far fa-minus-square"></i>

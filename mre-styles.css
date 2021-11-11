@@ -36,11 +36,11 @@
     opacity: 0.9;
 }
 
-.dnd5e.chat-card .dice-roll {
+.pergashaFoundryvtt.chat-card .dice-roll {
     font-size: 14px;
 }
 
-.dnd5e.chat-card.mre-item-card .card-roll {
+.pergashaFoundryvtt.chat-card.mre-item-card .card-roll {
     margin-top: .5rem;
 }
 
@@ -115,31 +115,23 @@
     height: 16px;
 }
 
-.dnd5e.sheet.item .mre-damage-header-container,
-.tidy5e.sheet.item .mre-damage-header-container {
+.pergashaFoundryvtt.sheet.item .mre-damage-header-container{
     display: flex;
 }
 
 
-.dnd5e.sheet.item .mre-damage-header-container .damage-header,
-.tidy5e.sheet.item .mre-damage-header-container .damage-header {
+.pergashaFoundryvtt.sheet.item .mre-damage-header-container .damage-header{
     flex: 1;
     display: inline-block;
 }
 
-.dnd5e.sheet.item .mre-auto-roll,
-.tidy5e.sheet.item .mre-auto-roll {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll {
     display: flex;
     flex: 0 0 60px;
     max-height: 24px;
 }
 
-.tidy5e.sheet.item .mre-damage-header-container .mre-auto-roll {
-    margin: 3px;
-}
-
-.dnd5e.sheet.item .mre-auto-roll span.label,
-.tidy5e.sheet.item .mre-auto-roll span.label {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll span.label {
     display: inline-block;
     position: relative;
     width: 0;
@@ -152,8 +144,7 @@
     color: #7a7971;
 }
 
-.dnd5e.sheet.item .mre-auto-roll button.checkbox,
-.tidy5e.sheet.item .mre-auto-roll button.checkbox {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox {
     flex: 1;
     position: relative;
     max-width: 16px;
@@ -166,20 +157,13 @@
     cursor: pointer;
 }
 
-.tidy5e.sheet.item .config-formula-groups {
-    color: #7a7971;
-    font-size: 16px;
-    margin-right: 4px;
-}
 
-.dnd5e.sheet.item .mre-auto-roll button.checkbox:hover,
-.tidy5e.sheet.item .mre-auto-roll button.checkbox:hover {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox:hover {
     box-shadow: none;
     text-shadow: 0 0 8px red;
 }
 
-.dnd5e.sheet.item .mre-auto-roll button.checkbox:before,
-.tidy5e.sheet.item .mre-auto-roll button.checkbox:before {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox:before {
     font-family: "Font Awesome 5 Free";
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -195,31 +179,16 @@
     color: #7a7971;
 }
 
-.dnd5e.sheet.item .mre-auto-roll button.checkbox.unchecked:before,
-.tidy5e.sheet.item .mre-auto-roll button.checkbox.unchecked:before {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox.unchecked:before {
     content: "\f057"; /* times */
 }
 
-.dnd5e.sheet.item .mre-auto-roll button.checkbox.indeterminate:before,
-.tidy5e.sheet.item .mre-auto-roll button.checkbox.indeterminate:before {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox.indeterminate:before {
     content: "\f111"; /* minus */
     font-weight: 400;
 }
 
-.dnd5e.sheet.item .mre-auto-roll button.checkbox.checked:before,
-.tidy5e.sheet.item .mre-auto-roll button.checkbox.checked:before {
+.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox.checked:before {
     content: "\f058"; /* check */
-}
-
-/* Tidy5e Sheet compatibility for auto roll "checkboxes" */
-.tidy5e.sheet.item .mre-damage-header-container .damage-control {
-    display: inline-block;
-}
-
-.tidy5e.sheet.item .sheet-body .tab.details .form-group .mre-auto-roll button.checkbox {
-    background: none;
-    width: 16px;
-    height: 16px;
-    font-size: 14px;
 }
 

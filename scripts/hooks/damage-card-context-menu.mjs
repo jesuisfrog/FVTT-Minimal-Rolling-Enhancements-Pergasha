@@ -30,25 +30,25 @@ Hooks.once("ready", async () => {
     };
     const contextOptions = [
         {
-            name: game.i18n.localize("DND5E.ChatContextDamage"),
+            name: game.i18n.localize("PERGASHA.ChatContextDamage"),
             icon: "<i class=\"fas fa-user-minus\"></i>",
             condition: canApply,
             callback: li => _applyDiceResultDamage(li, 1),
         },
         {
-            name: game.i18n.localize("DND5E.ChatContextHealing"),
+            name: game.i18n.localize("PERGASHA.ChatContextHealing"),
             icon: "<i class=\"fas fa-user-plus\"></i>",
             condition: canApply,
             callback: li => _applyDiceResultDamage(li, -1),
         },
         {
-            name: game.i18n.localize("DND5E.ChatContextDoubleDamage"),
+            name: game.i18n.localize("PERGASHA.ChatContextDoubleDamage"),
             icon: "<i class=\"fas fa-user-injured\"></i>",
             condition: canApply,
             callback: li => _applyDiceResultDamage(li, 2),
         },
         {
-            name: game.i18n.localize("DND5E.ChatContextHalfDamage"),
+            name: game.i18n.localize("PERGASHA.ChatContextHalfDamage"),
             icon: "<i class=\"fas fa-user-shield\"></i>",
             condition: canApply,
             callback: li => _applyDiceResultDamage(li, 0.5),

@@ -1,6 +1,6 @@
 {
     "name": "mre-pergasha",
-    "title": "Minimal Rolling Enhancements for the homebrew D&D5e Pergasha Setting",
+    "title": "Minimal Rolling Enhancements for the homebrew DnD5e Pergasha Setting",
     "description": "Some minimalist enhancements to the core D&D5e rolling workflow. Attempts to stay as close to core as possible while improving convenience.",
     "version": "3.2.0",
     "author": "Jesuisfrog",
@@ -25,7 +25,7 @@
     ],
     "minimumCoreVersion": "0.8.9",
     "compatibleCoreVersion": "0.8.9",
-    "url": "https://github.com/jesuisfrog/Foundry-Work/FVTT-Minimal-Rolling-Enhancements-Pergasha",
-    "manifest": "https://github.com/jesuisfrog/Foundry-Work/FVTT-Minimal-Rolling-Enhancements-Pergasha/releases/latest/download/module.json",
-    "download": "https://github.com/jesuisfrog/Foundry-Work/FVTT-Minimal-Rolling-Enhancements-Pergasha/releases/download/3.2.0/module.zip"
+    "url": "https://github.com/jesuisfrog/FVTT-Minimal-Rolling-Enhancements-Pergasha",
+    "manifest": "https://github.com/jesuisfrog/FVTT-Minimal-Rolling-Enhancements-Pergasha/module.json",
+    "download": "https://github.com/jesuisfrog/Foundry-Work/FVTT-Minimal-Rolling-Enhancements-Pergasha/module.zip"
 }

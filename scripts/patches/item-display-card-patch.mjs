@@ -44,8 +44,8 @@ function _replaceDamageButtons(messageData, item) {
 
     // Create formula group buttons
     const formulaGroups = item.getFlag(MODULE_NAME, "formulaGroups");
-    const damageText = game.i18n.localize("DND5E.Damage");
-    const healingText = game.i18n.localize("DND5E.Healing");
+    const damageText = game.i18n.localize("PERGASHA.Damage");
+    const healingText = game.i18n.localize("PERGASHA.Healing");
     const damageButtons = formulaGroups.map((group, i) => {
         let buttonText = item.data.data.actionType === "heal" ? healingText : damageText;
         if (formulaGroups.length > 1) buttonText += ` (${group.label})`;

@@ -1,5 +1,5 @@
 {
-  "mre-dnd5e": {
+  "mre-pergasha": {
     "SETTINGS": {
       "AutoRollChecksLabel": "Automatically Roll Item Checks",
       "AutoRollChecksHint": "Automatically roll the attack roll or tool check for the item if it exists.",

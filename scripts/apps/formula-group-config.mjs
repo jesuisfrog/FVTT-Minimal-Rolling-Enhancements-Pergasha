@@ -7,8 +7,8 @@ export class FormulaGroupConfig extends DocumentSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: [ "dnd5e", "mre-formula-group-config" ],
-            template: "modules/mre-dnd5e/templates/formula-group-config.hbs",
+            classes: [ "pergashaFoundryvtt", "mre-formula-group-config" ],
+            template: "modules/mre-pergasha/templates/formula-group-config.hbs",
             width: "auto",
             height: "auto",
             closeOnSubmit: false,
@@ -29,7 +29,7 @@ export class FormulaGroupConfig extends DocumentSheet {
             formulas: itemData.damage.parts.map(p => ({
                 formula: p[0]?.trim()?.length ? p[0] : `<${emptyString}>`,
                 type: p[1],
-                typeLabel: CONFIG.DND5E.damageTypes[p[1]] ?? CONFIG.DND5E.healingTypes[p[1]] ?? game.i18n.localize("DND5E.None"),
+                typeLabel: CONFIG.PERGASHA.damageTypes[p[1]] ?? CONFIG.PERGASHA.healingTypes[p[1]] ?? game.i18n.localize("PERGASHA.None"),
             })),
             formulaGroups: formulaGroupData,
             canAdd: formulaGroupData.length < MAX_FORMULA_GROUPS,

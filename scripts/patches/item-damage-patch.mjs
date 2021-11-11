@@ -23,8 +23,8 @@ export function patchItemRollDamage() {
 
         // Set up initial inner roll parameters
         const actionTypeDamageType = this.data.data.actionType === "heal"
-            ? game.i18n.localize("DND5E.Healing")
-            : game.i18n.localize("DND5E.DamageRoll");
+            ? game.i18n.localize("PERGASHA.Healing")
+            : game.i18n.localize("PERGASHA.DamageRoll");
         let title = `${this.name} - ${actionTypeDamageType}`;
         let rollMode = options.rollMode ?? game.settings.get("core", "rollMode");
         let bonus = null;
@@ -93,7 +93,7 @@ export function patchItemRollDamage() {
  * @private
  */
 async function _damageDialog({ title, rollMode, dialogOptions } = {}) {
-    const template = "systems/dnd5e/templates/chat/roll-dialog.html";
+    const template = "systems/pergashaFoundryvtt/templates/chat/roll-dialog.html";
     const dialogData = {
         formula: "",
         rollMode: rollMode,
@@ -109,11 +109,11 @@ async function _damageDialog({ title, rollMode, dialogOptions } = {}) {
             content: content.prop("outerHTML"),
             buttons: {
                 critical: {
-                    label: game.i18n.localize("DND5E.CriticalHit"),
+                    label: game.i18n.localize("PERGASHA.CriticalHit"),
                     callback: html => resolve({ critical: true, ..._parseDamageDialog(html[0].querySelector("form")) })
                 },
                 normal: {
-                    label: game.i18n.localize("DND5E.Normal"),
+                    label: game.i18n.localize("PERGASHA.Normal"),
                     callback: html => resolve({ critical: false, ..._parseDamageDialog(html[0].querySelector("form")) })
                 },
             },
@@ -152,8 +152,8 @@ async function _rollDamageParts(itemDamage, groupDamageParts, innerRollDamage, {
         }, ...rest);
         if (!roll) continue;
         const flavor = type === "bonus"
-            ? game.i18n.localize("DND5E.RollSituationalBonus").slice(0, -1)
-            : CONFIG.DND5E.damageTypes[type] ?? CONFIG.DND5E.healingTypes[type] ?? game.i18n.localize("DND5E.Damage");
+            ? game.i18n.localize("PERGASHA.RollSituationalBonus").slice(0, -1)
+            : CONFIG.PERGASHA.damageTypes[type] ?? CONFIG.PERGASHA.healingTypes[type] ?? game.i18n.localize("PERGASHA.Damage");
         partRolls.push({ roll, flavor });
     }
 
@@ -173,7 +173,7 @@ async function _renderCombinedDamageRollContent(item, rolls) {
     }
 
     // Assemble them under one container div
-    const container = $(`<div class="dnd5e chat-card item-card mre-damage-card">`);
+    const container = $(`<div class="pergashaFoundryvtt chat-card item-card mre-damage-card">`);
     container.append(`<div class="card-content">`);
     const damageSection = $(`<div class="card-roll formula-group">`);
     damageSection.append(renderedRolls);
@@ -207,14 +207,14 @@ async function _createCombinedDamageMessageData(item, content, flavor, rolls, cr
         sound: CONFIG.sounds.dice,
         type: foundry.CONST.CHAT_MESSAGE_TYPES.ROLL,
         flags: {
-            ["dnd5e.roll"]: { type: "damage", itemId: item.id },
-            ["mre-dnd5e.rolls"]: rolls.map(r => foundry.utils.deepClone(r)),
+            ["pergashaFoundryvtt.roll"]: { type: "damage", itemId: item.id },
+            ["mre-pergasha.rolls"]: rolls.map(r => foundry.utils.deepClone(r)),
         }
     };
 
     if (critical) {
-        messageData.flavor += ` (${game.i18n.localize("DND5E.Critical")})`;
-        messageData.flags["dnd5e.roll"].critical = true;
+        messageData.flavor += ` (${game.i18n.localize("PERGASHA.Critical")})`;
+        messageData.flags["pergashaFoundryvtt.roll"].critical = true;
     }
 
     ChatMessage.applyRollMode(messageData, rollMode);

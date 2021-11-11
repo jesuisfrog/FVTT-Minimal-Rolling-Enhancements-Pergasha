@@ -17,10 +17,10 @@ function _handleRenderChatLog(html) {
         if ( !actor ) return;
 
         // Get the Item from stored flag data or by the item ID on the Actor
-        const storedData = message.getFlag("dnd5e", "itemData");
+        const storedData = message.getFlag("pergashaFoundryvtt", "itemData");
         const item = storedData ? new CONFIG.Item.documentClass(storedData, actor) : actor.items.get(card.dataset.itemId);
         if ( !item ) {
-            return ui.notifications.error(game.i18n.format("DND5E.ActionWarningNoItem", {item: card.dataset.itemId, name: actor.name}))
+            return ui.notifications.error(game.i18n.format("PERGASHA.ActionWarningNoItem", {item: card.dataset.itemId, name: actor.name}))
         }
 
         const spellLevel = parseInt(card.dataset.spellLevel) || null;
