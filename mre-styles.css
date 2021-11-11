@@ -1,0 +1,225 @@
+.mre-damage-card .dice-total::after {
+    content: attr(data-damage-type);
+    display: block;
+    margin-bottom: .25rem;
+    font-size: .8rem;
+    line-height: .8rem;
+    font-weight: normal;
+    color: #333333;
+}
+
+.mre-damage-card .card-total.dice-total {
+    flex: 0;
+    position: relative;
+    margin: 0;
+    line-height: 24px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #999;
+    border-radius: 3px;
+    box-shadow: 0 0 2px #FFF inset;
+    word-break: break-all;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.mre-damage-card .formula-group > *:not(:last-child) {
+    margin-bottom: .4rem;
+}
+
+.mre-damage-card hr {
+    margin: 0;
+}
+
+.dice-roll .dice-formula {
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.dnd5e.chat-card .dice-roll {
+    font-size: 14px;
+}
+
+.dnd5e.chat-card.mre-item-card .card-roll {
+    margin-top: .5rem;
+}
+
+.mre-item-card .card-roll .flavor-text {
+    line-height: 20px;
+}
+
+.mre-formula-group-config input[type=text],
+.mre-formula-group-config input[type=number] {
+    border: 1px solid #7a7971;
+}
+
+.mre-formula-group-config a.disabled {
+    cursor: not-allowed;
+    opacity: 50%;
+}
+
+.mre-formula-group-config a.disabled:hover {
+    text-shadow: unset;
+}
+
+.mre-formula-group-config table {
+    border: 0;
+    width: auto;
+}
+
+.mre-formula-group-config table td {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.mre-formula-group-config table td {
+    width: 100px;
+}
+
+.mre-formula-group-config table td:first-child {
+    min-width: 125px;
+    width: unset;
+    text-align: right;
+    padding-right: 0.25rem;
+}
+
+.mre-formula-group-config table td:nth-child(2) {
+    width: auto;
+    padding-left: 0.25rem;
+}
+
+
+.mre-formula-group-config table td:not(:first-child):not(:last-child) {
+    border-right: 1px solid rgba(0,0,0,.1);
+}
+
+
+.mre-formula-group-config table td:last-child {
+    width: auto;
+}
+
+.mre-formula-group-config table td:not(:nth-child(1)):not(:nth-child(2)) {
+    text-align: center;
+}
+
+.mre-formula-group-config .formula-label {
+    font-weight: bold;
+}
+
+.mre-formula-group-config .formula-type-label {
+    font-size: 12px;
+}
+
+.mre-formula-group-config input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+}
+
+.dnd5e.sheet.item .mre-damage-header-container,
+.tidy5e.sheet.item .mre-damage-header-container {
+    display: flex;
+}
+
+
+.dnd5e.sheet.item .mre-damage-header-container .damage-header,
+.tidy5e.sheet.item .mre-damage-header-container .damage-header {
+    flex: 1;
+    display: inline-block;
+}
+
+.dnd5e.sheet.item .mre-auto-roll,
+.tidy5e.sheet.item .mre-auto-roll {
+    display: flex;
+    flex: 0 0 60px;
+    max-height: 24px;
+}
+
+.tidy5e.sheet.item .mre-damage-header-container .mre-auto-roll {
+    margin: 3px;
+}
+
+.dnd5e.sheet.item .mre-auto-roll span.label,
+.tidy5e.sheet.item .mre-auto-roll span.label {
+    display: inline-block;
+    position: relative;
+    width: 0;
+    margin: 2px;
+    line-height: .9;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: .05rem;
+    color: #7a7971;
+}
+
+.dnd5e.sheet.item .mre-auto-roll button.checkbox,
+.tidy5e.sheet.item .mre-auto-roll button.checkbox {
+    flex: 1;
+    position: relative;
+    max-width: 16px;
+    height: 16px;
+    top: -2px;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.tidy5e.sheet.item .config-formula-groups {
+    color: #7a7971;
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+.dnd5e.sheet.item .mre-auto-roll button.checkbox:hover,
+.tidy5e.sheet.item .mre-auto-roll button.checkbox:hover {
+    box-shadow: none;
+    text-shadow: 0 0 8px red;
+}
+
+.dnd5e.sheet.item .mre-auto-roll button.checkbox:before,
+.tidy5e.sheet.item .mre-auto-roll button.checkbox:before {
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: #7a7971;
+}
+
+.dnd5e.sheet.item .mre-auto-roll button.checkbox.unchecked:before,
+.tidy5e.sheet.item .mre-auto-roll button.checkbox.unchecked:before {
+    content: "\f057"; /* times */
+}
+
+.dnd5e.sheet.item .mre-auto-roll button.checkbox.indeterminate:before,
+.tidy5e.sheet.item .mre-auto-roll button.checkbox.indeterminate:before {
+    content: "\f111"; /* minus */
+    font-weight: 400;
+}
+
+.dnd5e.sheet.item .mre-auto-roll button.checkbox.checked:before,
+.tidy5e.sheet.item .mre-auto-roll button.checkbox.checked:before {
+    content: "\f058"; /* check */
+}
+
+/* Tidy5e Sheet compatibility for auto roll "checkboxes" */
+.tidy5e.sheet.item .mre-damage-header-container .damage-control {
+    display: inline-block;
+}
+
+.tidy5e.sheet.item .sheet-body .tab.details .form-group .mre-auto-roll button.checkbox {
+    background: none;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+}
+

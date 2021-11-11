@@ -1,0 +1,68 @@
+<form autocomplete="off">
+    <p class="notes">{{ localize "mre-dnd5e.FORMULA-GROUP.DialogHint" }}</p>
+    <table>
+        <tr>
+            <td><!-- formula column --></td>
+            <td><!-- damage type column --></td>
+            {{#each formulaGroups}}
+                <td>
+                    <input
+                        title="{{localize "mre-dnd5e.FORMULA-GROUP.RenameFormulaGroup" }}"
+                        name="formulaGroupLabels"
+                        type="text"
+                        value="{{this.label}}"
+                    />
+                </td>
+            {{/each}}
+            <td>
+                    <a
+                        title="{{localize "mre-dnd5e.FORMULA-GROUP.AddFormulaGroup" }}"
+                        class="{{#if canAdd}}add-formula-group{{else}}disabled{{/if}}"
+                    >
+                        <i class="far fa-plus-square"></i>
+                    </a>
+            </td>
+        </tr>
+        {{#each formulas}}
+            <tr>
+                <td>
+                    <span class="formula-label">{{this.formula}}</span>
+                </td>
+                <td>
+                    <span class="formula-type-label">({{this.typeLabel}})</span>
+                </td>
+                {{#each ../formulaGroups}}
+                    <td>
+                        <input
+                            name="formulaGroupContains.{{@index}}"
+                            type="checkbox"
+                            {{checked (lookup this.containsFormula @../index)}}
+                        />
+                    </td>
+                {{/each}}
+                <td><!-- add new formula group column --></td>
+            </tr>
+        {{/each}}
+        <tr>
+            <td><!-- formula column --></td>
+            <td><!-- damage type column --></td>
+            {{#each formulaGroups}}
+                <td>
+                    {{#if (ne @index 0)}}
+                        <a
+                            title="{{localize "mre-dnd5e.FORMULA-GROUP.DeleteFormulaGroup" }}"
+                            class="delete-formula-group" data-group-index="{{@index}}"
+                        >
+                            <i class="far fa-minus-square"></i>
+                        </a>
+                    {{else}}
+                        <a class="disabled" data-group-index="{{@index}}">
+                            <i class="far fa-minus-square"></i>
+                        </a>
+                    {{/if}}
+                </td>
+            {{/each}}
+            <td><!-- add new formula group column --></td>
+        </tr>
+    </table>
+</form>
