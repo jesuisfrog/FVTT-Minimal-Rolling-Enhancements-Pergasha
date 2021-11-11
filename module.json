@@ -26,6 +26,6 @@
     "minimumCoreVersion": "0.8.9",
     "compatibleCoreVersion": "0.8.9",
     "url": "https://github.com/jesuisfrog/FVTT-Minimal-Rolling-Enhancements-Pergasha",
-    "manifest": "https://github.com/jesuisfrog/FVTT-Minimal-Rolling-Enhancements-Pergasha/module.json",
-    "download": "https://github.com/jesuisfrog/Foundry-Work/FVTT-Minimal-Rolling-Enhancements-Pergasha/module.zip"
+    "manifest": "https://github.com/jesuisfrog/FVTT-Minimal-Rolling-Enhancements-Pergasha/master/module.json",
+    "download": "https://github.com/jesuisfrog/Foundry-Work/FVTT-Minimal-Rolling-Enhancements-Pergasha/raw/master/module.zip"
 }
