@@ -7,7 +7,7 @@ export class FormulaGroupConfig extends DocumentSheet {
     /** @override */
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: [ "pergashaFoundryvtt", "mre-formula-group-config" ],
+            classes: ["pergashaFoundryvtt", "mre-formula-group-config"],
             template: "modules/mre-pergasha/templates/formula-group-config.hbs",
             width: "auto",
             height: "auto",
@@ -50,7 +50,6 @@ export class FormulaGroupConfig extends DocumentSheet {
     _getHeaderButtons() {
         const existing = super._getHeaderButtons()
         if (!this.isEditable) return existing;
-
         // Remove all buttons except for the "Close" button, and re-label it to "Save & Close"
         const closeButton = existing[existing.length - 1];
         closeButton.label = game.i18n.localize(`${MODULE_NAME}.FORMULA-GROUP.SaveAndClose`);
@@ -60,7 +59,6 @@ export class FormulaGroupConfig extends DocumentSheet {
     /** @override */
     activateListeners(html) {
         super.activateListeners(html);
-
         if (this.isEditable) {
             html.find(".add-formula-group").click(this._handleAddFormulaGroup.bind(this));
             html.find(".delete-formula-group").click(this._handleDeleteFormulaGroup.bind(this));
@@ -82,10 +80,20 @@ export class FormulaGroupConfig extends DocumentSheet {
         this.renderResetWidth();
     }
 
+    _getSubmitData(updateData = {}) {
+        const data = super._getSubmitData(updateData);
+        const dataExploded = foundry.utils.expandObject(data);
+
+        // make up for the v9 change to checkboxes by contructing the array how it looked in v8
+        const formulaGroupContains = Object.values(dataExploded.formulaGroupContains).map((valueObj) => Object.values(valueObj));
+
+        return { ...dataExploded, formulaGroupContains };
+    }
+
+
     /** @override */
     async _updateObject(event, formData) {
         if (!this.isEditable) return;
-
         formData = foundry.utils.expandObject(formData);
 
         // If there are no formula groups in the form or no formulae to be in groups, quit early

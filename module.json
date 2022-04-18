@@ -2,7 +2,7 @@
     "name": "mre-pergasha",
     "title": "Minimal Rolling Enhancements for the homebrew DnD5e Pergasha Setting",
     "description": "Some minimalist enhancements to the core D&D5e rolling workflow. Attempts to stay as close to core as possible while improving convenience.",
-    "version": "3.2.1",
+    "version": "3.2.2",
     "author": "Jesuisfrog",
     "systems": [
         "pergashaFoundryvtt"
