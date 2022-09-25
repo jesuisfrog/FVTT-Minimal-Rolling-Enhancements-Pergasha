@@ -71,12 +71,12 @@ export function patchItemRollDamage() {
         if (bonus) groupDamageParts.push([bonus, "bonus"]);
 
         // Roll the filtered group damage parts
-        const partRolls = await _rollDamageParts(this.data.data.damage, groupDamageParts, wrapped, config, ...rest);
+        const partRolls = await _rollDamageParts(this.data.data.damage, groupDamageParts, wrapped, config, this.getRollData(), ...rest);
 
         // Prepare the chat message content
         const renderedContent = await _renderCombinedDamageRollContent(this, partRolls);
 
-        const messageData = await _createCombinedDamageMessageData(this, renderedContent, title, partRolls.map(p => p.roll), critical, rollMode, options);
+        const messageData = await _createCombinedDamageMessageData(this, renderedContent, title, partRolls.map(p => p.roll), critical, rollMode, formulaGroup, options);
 
         if (options.chatMessage ?? true) {
             const msg = new ChatMessage(messageData);
@@ -130,17 +130,21 @@ function _parseDamageDialog(form) {
     } : {};
 }
 
-async function _rollDamageParts(itemDamage, groupDamageParts, innerRollDamage, { critical, event, spellLevel, versatile, options }, ...rest) {
+async function _rollDamageParts(itemDamage, groupDamageParts, innerRollDamage, { critical, event, spellLevel, versatile, options }, rollData, ...rest) {
     const partRolls = [];
 
     const originalItemDamageParts = foundry.utils.deepClone(itemDamage.parts);
 
-    // Roll each of the item's damage parts separately.
-    for (let [formula, type] of groupDamageParts.filter(item => !!item)) {
+    // MUTATED
+    const [firstPart, ...restParts] = groupDamageParts.filter(item => !!item);
+
+    // roll the first part with the wrapped rollDamage
+    if (firstPart) {
+        let [formula, type] = firstPart;
         const partOptions = foundry.utils.deepClone(options);
         partOptions.chatMessage = false;
 
-        // Override the item's damage so that the original roll damage function only rolls one "part" at a time.
+        // Override the item's damage so that the original roll damage function only rolls the first "part".
         itemDamage.parts = [[formula, type]];
         /** @type Roll */
         const roll = await innerRollDamage({
@@ -150,11 +154,36 @@ async function _rollDamageParts(itemDamage, groupDamageParts, innerRollDamage, {
             versatile,
             options: partOptions,
         }, ...rest);
-        if (!roll) continue;
-        const flavor = type === "bonus"
-            ? game.i18n.localize("PERGASHA.RollSituationalBonus").slice(0, -1)
-            : CONFIG.PERGASHA.damageTypes[type] ?? CONFIG.PERGASHA.healingTypes[type] ?? game.i18n.localize("PERGASHA.Damage");
-        partRolls.push({ roll, flavor });
+        if (roll) {
+            const flavor = type === "bonus"
+                ? game.i18n.localize("PERGASHA.RollSituationalBonus").slice(0, -1)
+                : CONFIG.PERGASHA.damageTypes[type] ?? CONFIG.PERGASHA.healingTypes[type] ?? game.i18n.localize("PERGASHA.Damage");
+            partRolls.push({ roll, flavor });
+
+            itemDamage.parts = originalItemDamageParts;
+        }
+    }
+
+    // Roll the rest of the item's damage parts separately with `damageRoll` directly
+    if (restParts.length) {
+        for (let [formula, type] of restParts) {
+            const partOptions = foundry.utils.deepClone(options);
+            partOptions.chatMessage = false;
+
+            /** @type Roll */
+            const roll = await game.pergashaFoundryvtt.dice.damageRoll({
+                critical,
+                event,
+                data: rollData,
+                parts: [formula],
+                ...partOptions,
+            }, ...rest);
+            if (!roll) continue;
+            const flavor = type === "bonus"
+                ? game.i18n.localize("PERGASHA.RollSituationalBonus").slice(0, -1)
+                : CONFIG.PERGASHA.damageTypes[type] ?? CONFIG.PERGASHA.healingTypes[type] ?? game.i18n.localize("PERGASHA.Damage");
+            partRolls.push({ roll, flavor });
+        }
     }
 
     itemDamage.parts = originalItemDamageParts;
@@ -193,7 +222,7 @@ async function _renderCombinedDamageRollContent(item, rolls) {
     return container.prop("outerHTML");
 }
 
-async function _createCombinedDamageMessageData(item, content, flavor, rolls, critical, rollMode, options) {
+async function _createCombinedDamageMessageData(item, content, flavor, rolls, critical, rollMode, formulaGroup, options) {
     // This decoy roll is used to convince foundry that the message has ROLL type
     const combinedRoll = combineRolls(...rolls);
 
@@ -209,6 +238,7 @@ async function _createCombinedDamageMessageData(item, content, flavor, rolls, cr
         flags: {
             ["pergashaFoundryvtt.roll"]: { type: "damage", itemId: item.id },
             ["mre-pergasha.rolls"]: rolls.map(r => foundry.utils.deepClone(r)),
+            ["mre-pergasha.formulaGroup"]: formulaGroup
         }
     };
 

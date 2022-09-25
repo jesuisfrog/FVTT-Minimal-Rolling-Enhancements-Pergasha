@@ -117,24 +117,42 @@
 
 .pergashaFoundryvtt.sheet.item .mre-damage-header-container{
     display: flex;
+    gap: 6px;
+    align-items: center;
 }
-
 
 .pergashaFoundryvtt.sheet.item .mre-damage-header-container .damage-header{
     flex: 1;
-    display: inline-block;
 }
 
-.pergashaFoundryvtt.sheet.item .mre-auto-roll {
+.pergashaFoundryvtt.sheet.item label.mre-auto-roll {
     display: flex;
     flex: 0 0 60px;
     max-height: 24px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.pergashaFoundryvtt.sheet.item .mre-auto-roll input[type=checkbox] {
+    margin: 0 2px;
+    cursor: pointer;
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.sheet.item .locked label.mre-auto-roll {
+    cursor: default;
+}
+
+.sheet.item .locked label.mre-auto-roll input[type=checkbox] {
+    cursor: default;
 }
 
 .pergashaFoundryvtt.sheet.item .mre-auto-roll span.label {
     display: inline-block;
-    position: relative;
-    width: 0;
     margin: 2px;
     line-height: .9;
     text-transform: uppercase;
@@ -142,9 +160,11 @@
     font-weight: bold;
     letter-spacing: .05rem;
     color: #7a7971;
+    white-space: normal;
+    text-align: start;
 }
 
-.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox {
+/* .pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox {
     flex: 1;
     position: relative;
     max-width: 16px;
@@ -155,15 +175,15 @@
     padding: 0;
     margin: 5px;
     cursor: pointer;
-}
+} */
 
 
-.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox:hover {
+/* .pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox:hover {
     box-shadow: none;
     text-shadow: 0 0 8px red;
-}
+} */
 
-.pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox:before {
+/* .pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox:before {
     font-family: "Font Awesome 5 Free";
     display: inline-block;
     -moz-osx-font-smoothing: grayscale;
@@ -177,7 +197,7 @@
     left: 0;
     top: 1px;
     color: #7a7971;
-}
+} */
 
 .pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox.unchecked:before {
     content: "\f057"; /* times */
@@ -191,4 +211,6 @@
 .pergashaFoundryvtt.sheet.item .mre-auto-roll button.checkbox.checked:before {
     content: "\f058"; /* check */
 }
+
+
 

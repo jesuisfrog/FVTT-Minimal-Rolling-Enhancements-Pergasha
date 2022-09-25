@@ -1,28 +1,30 @@
 // TODO remove after 0.8.0. See: https://gitlab.com/foundrynet/foundryvtt/-/issues/4495
-ContextMenu.prototype.bind = function patchedBind() {
-    this.element.on(this.eventName, this.selector, event => {
-        event.preventDefault();
-        let parent = $(event.currentTarget),
-            menu = this.menu;
+//BUG
+// ContextMenu.prototype.bind = function patchedBind() {
+//     this.element.on(this.eventName, this.selector, event => {
+//         event.preventDefault();
+//         let parent = $(event.currentTarget),
+//             menu = this.menu;
 
-        // Remove existing context UI
-        $('.context').removeClass("context");
+//         // Remove existing context UI
+//         $('.context').removeClass("context");
 
-        // Close the current context
-        if ( $.contains(parent[0], menu[0]) ) this.close();
+//         // Close the current context
+//         if ( $.contains(parent[0], menu[0]) ) this.close();
 
-        // If the new target element is different
-        else {
-            event.stopPropagation();
-            this.render(parent);
-            ui.context = this;
-        }
-    });
-}
+//         // If the new target element is different
+//         else {
+//             event.stopPropagation();
+//             this.render(parent);
+//             ui.context = this;
+//         }
+//     });
+// }
 
 /**
  * Register a new context menu to be applied to individual damage rolls in a combined damage card
  */
+
 Hooks.once("ready", async () => {
     let canApply = li => {
         const message = game.messages.get(li.closest(".chat-message").data("messageId"));
